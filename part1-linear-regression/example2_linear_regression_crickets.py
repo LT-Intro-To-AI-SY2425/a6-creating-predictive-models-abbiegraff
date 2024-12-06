@@ -10,6 +10,8 @@ y = data["Chirps"].values
 
 # use reshape to turn the x values into a 2D array
 x = x.reshape(-1, 1)
+print(x)
+print(y)
 
 # create the model
 model = LinearRegression().fit(x, y)

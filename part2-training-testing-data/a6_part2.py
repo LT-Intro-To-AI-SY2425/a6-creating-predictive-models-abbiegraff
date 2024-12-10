@@ -21,6 +21,7 @@ model = LinearRegression().fit(x,y)
 # Find the coefficient, bias, and r squared values. 
 # Each should be a float and rounded to two decimal places. 
 coef = round(float(model.intercept_), 2)
+intercept = round(float(model.intercept_), 2)
 r_squared = model.score(x, y)
 
 # Print out the linear equation and r squared value:

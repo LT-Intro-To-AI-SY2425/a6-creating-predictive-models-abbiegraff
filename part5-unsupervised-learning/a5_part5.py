@@ -3,35 +3,35 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 
-#imports the data
+# Imports the data
 data = pd.read_csv("part5-unsupervised-learning/customer_data.csv")
-x = data[["Annual Income", "Spending Score"]]
+x = data[["Annual Income", "Spending Score"]]  # Select only numeric columns for clustering
 
-#standardize the data
-x_std = StandardScaler().fit_transform(data)
+# Standardize the data
+x_std = StandardScaler().fit_transform(x)
 
-#the value of k has been defined for you
+# The value of k has been defined for you
 k = 5
 
-#apply the kmeans algorithm
+# Apply the kmeans algorithm
 km = KMeans(n_clusters=k).fit(x_std)
 
-#get the centroid and label values
+# Get the centroid and label values
 centroids = km.cluster_centers_
 labels = km.labels_
 
-#sets the size of the graph
+# Sets the size of the graph
 plt.figure(figsize=(5,4))
 
-#use a for loop to plot the data points in each cluster
+# Use a for loop to plot the data points in each cluster
 for i in range(k):
     cluster = x_std[labels == i]
-    plt.scatter(cluster[:,0], cluster[:,1])
+    plt.scatter(cluster[:, 0], cluster[:, 1])
 
-#plot the centroids
-plt.scatter(centroids[:,0], centroids[:,1], marker='X', s=100, c='r', label='centroid')
-            
-#shows the graph
+# Plot the centroids
+plt.scatter(centroids[:, 0], centroids[:, 1], marker='X', s=100, c='r', label='centroid')
+
+# Shows the graph
 plt.xlabel("Annual Income")
 plt.ylabel("Spending Score")
 plt.show()
